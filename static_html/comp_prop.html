@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="UTF-8" />
-    <title>Introducing JSX</title>
+    <title>components and props</title>
     <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
     <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
     <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
@@ -10,24 +10,26 @@
   <body>
     <div id="root"></div>
     <script type="text/babel">
-      function formatName(user) {
-        return user.firstName + ' ' + user.lastName;
-      }
-      function getGreeting(user) {
-        if (user) {
-          return <h1>Hello, {formatName(user)}!</h1>;
+      class Welcome extends React.Component {
+        render() {
+          return <h1>Hello, {this.props.name}</h1>;
         }
-        return <h1>Hello, Stranger.</h1>;
       }
-    
-      const user = {
-        firstName: 'Harper',
-        lastName: 'Perez'
-      };
-      const element = getGreeting(user);
+
+      class App extends React.Component {
+        render() {
+          return (
+            <div>
+              <Welcome name="Sara"/>
+              <Welcome name="Cahal"/>
+              <Welcome name="Edite"/>
+            </div>
+          );
+        }
+      }
 
       ReactDOM.render(
-        element,
+        <App />,
         document.getElementById('root')
       );
     </script>
