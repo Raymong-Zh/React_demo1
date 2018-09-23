@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>state and life cycle</title>
+    <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="text/babel">
+        class Toggle extends React.Component {
+          constructor(props){
+            super(props);
+            this.state =  {isToogleOn: true};
+            //This binding is necessary to make `this` work in the callback
+            this.handleClick = this.handleClick.bind(this)
+          }
+
+          handleClick() {
+            this.setState(state => ({
+              isToogleOn: !state.isToogleOn
+            }));
+          }
+
+          render() {
+            return (
+              <button onClick={this.handleClick}>
+                {this.state.isToogleOn ? 'ON' : 'OFF'}
+              </button>
+            );
+          }
+          
+        }
+        ReactDOM.render(
+          <Toggle />,
+          document.getElementById('root'))
+
+    </script>
+    
+  </body>
+</html>
