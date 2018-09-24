@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="UTF-8" />
-    <title>handling events</title>
+    <title>list and keys</title>
     <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
     <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
     <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
@@ -10,20 +10,11 @@
   <body>
     <div id="root"></div>
     <script type="text/babel">
-        function ActionLink(){
-          function handleClick(e) {
-            e.preventDefault();
-            console.log('the link was clicked.');
-          }
-          return (
-            <a href="#" onClick={handleClick}>
-              Click me
-            </a>
-          );
-        }
+        
         ReactDOM.render(
-          <ActionLink />,
-          document.getElementById('root'))
+          <NumberList numbers={numbers} />,
+          document.getElementById('root')
+        );
 
     </script>
     
